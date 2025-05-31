@@ -1,7 +1,7 @@
 <?php
 $host = "localhost";
 $user = "root";
-$password = "";
+$password = "YourStrongPassword@123";
 $dbname = "PoliceDb";
 
 $conn = new mysqli($host, $user, $password, $dbname);
