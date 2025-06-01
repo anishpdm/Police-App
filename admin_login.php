@@ -56,8 +56,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <input type="password" name="password" placeholder="Password" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-400">
       <button type="submit" class="w-full py-3 bg-indigo-700 text-white font-semibold rounded-lg hover:bg-indigo-800 transition">Login</button>
       <br> <br>
-      <a  class="m-4 w-full py-3 bg-yellow-700 text-white font-semibold rounded-lg hover:bg-blue-800 transition" href="http://localhost/police-duty-tool/">Back to Home</a>
     </form>
+
+      <!-- Improved Back to Home Button -->
+  <div class="mt-6 text-center">
+    <a href="http://localhost/police-duty-tool/"
+      class="inline-block w-full py-3 bg-gray-200 text-gray-800 font-semibold rounded-lg hover:bg-gray-300 transition">
+      ⬅ Back to Home
+    </a>
+  </div>
+
+  
   </div>
 
 </body>
