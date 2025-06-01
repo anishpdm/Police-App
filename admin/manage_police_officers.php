@@ -26,22 +26,29 @@ $msg = '';
 if (isset($_GET['delete'])) {
     $id = intval($_GET['delete']);
 
-    // Use prepare instead of query for parameterized queries
+    // Delete related entries from case_officers
+    $delRelated = $conn->prepare("DELETE FROM case_officers WHERE officer_id = ?");
+    if ($delRelated) {
+        $delRelated->bind_param("i", $id);
+        $delRelated->execute();
+        $delRelated->close();
+    }
+
+    // Now delete from police_officers
     $delStmt = $conn->prepare("DELETE FROM police_officers WHERE id = ?");
     if ($delStmt) {
         $delStmt->bind_param("i", $id);
-
         if ($delStmt->execute()) {
-            $msg = "✅ Officer deleted successfully.";
+            $msg = "✅ Officer and related case assignments deleted successfully.";
         } else {
             $msg = "❌ Execution failed: " . $delStmt->error;
         }
-
         $delStmt->close();
     } else {
         $msg = "❌ Prepare failed: " . $conn->error;
     }
 }
+
 
 
 // Handle update
