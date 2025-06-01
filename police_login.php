@@ -62,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
           <!-- Improved Back to Home Button -->
   <div class="mt-6 text-center">
-    <a href="http://localhost/police-duty-tool/"
+    <a href="http://13.126.207.54"
       class="inline-block w-full py-3 bg-gray-200 text-gray-800 font-semibold rounded-lg hover:bg-gray-300 transition">
       ⬅ Back to Home
     </a>
