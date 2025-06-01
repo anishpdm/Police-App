@@ -11,7 +11,7 @@ $run_schedule = isset($_GET['schedule']) && $_GET['schedule'] == '1';
 
 if ($run_schedule) {
     // Get officers excluding inspectors and SIs
-    $officers = $conn->query("SELECT id, name FROM police_officers WHERE rank != 'inspector' AND rank != 'law/order si' AND rank != 'crime si'")->fetch_all(MYSQLI_ASSOC);
+    $officers = $conn->query("SELECT id, name FROM police_officers WHERE `rank` != 'inspector' AND `rank` != 'law/order si' AND `rank` != 'crime si'")->fetch_all(MYSQLI_ASSOC);
 
     // Get duty types that are not fixed
     $duties = $conn->query("SELECT Id, DutyType, Count FROM Duties WHERE IsFixed = 0")->fetch_all(MYSQLI_ASSOC);
