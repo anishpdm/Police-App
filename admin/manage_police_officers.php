@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
     $rank = $_POST['rank'];
 
-    $updateStmt = $conn->prepare("UPDATE police_officers SET name = ?, email = ?, rank = ? WHERE id = ?");
+    $updateStmt = $conn->prepare("UPDATE police_officers SET name = ?, email = ?, `rank` = ? WHERE id = ?");
     $updateStmt->bind_param("sssi", $name, $email, $rank, $id);
     if ($updateStmt->execute()) {
         $msg = "✅ Officer updated successfully.";
