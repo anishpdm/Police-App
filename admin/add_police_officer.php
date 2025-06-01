@@ -32,16 +32,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         // Include the phone number, GL number, and other details in the insert query
 
-        // $stmt = $conn->prepare("INSERT INTO police_officers (name, email, rank, password, gl_number, phone) VALUES (?, ?, ?, ?, ?, ?)");
-        // $stmt->bind_param("ssssss", $name, $email, $rank, $password, $gl_number, $phone);
+        $stmt = $conn->prepare("INSERT INTO police_officers (name, email, rank, password, gl_number, phone) VALUES (?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("sssss", $name, $email, $rank, $password, $gl_number, $phone);
     
-        // if ($stmt->execute()) {
-        //     $success_msg = "✅ Police officer added successfully!";
-        // } else {
-        //     $error_msg = "❌ Failed to add police officer.";
-        //     echo $stmt->error;
-        // }
-        // $stmt->close();
+        if ($stmt->execute()) {
+            $success_msg = "✅ Police officer added successfully!";
+        } else {
+            $error_msg = "❌ Failed to add police officer.";
+            echo $stmt->error;
+        }
+        $stmt->close();
     }
     
     $check->close();
