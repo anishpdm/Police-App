@@ -17,15 +17,27 @@ if ($conn->connect_error) {
 $msg = '';
 
 // Handle delete
+// Handle delete
 if (isset($_GET['delete'])) {
     $id = intval($_GET['delete']);
-    $delStmt = $conn->query("DELETE FROM police_officers WHERE id = ?");
-        $delStmt->bind_param("i",  $id);
 
-     if ($delStmt->execute()) {
-    $msg = "✅ Officer deleted successfully.";
+    // Use prepare instead of query for parameterized queries
+    $delStmt = $conn->prepare("DELETE FROM police_officers WHERE id = ?");
+    if ($delStmt) {
+        $delStmt->bind_param("i", $id);
+
+        if ($delStmt->execute()) {
+            $msg = "✅ Officer deleted successfully.";
+        } else {
+            $msg = "❌ Execution failed: " . $delStmt->error;
+        }
+
+        $delStmt->close();
+    } else {
+        $msg = "❌ Prepare failed: " . $conn->error;
     }
 }
+
 
 // Handle update
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
