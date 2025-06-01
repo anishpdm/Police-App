@@ -78,7 +78,7 @@ $deleteStmt->close();
 
 
 // Fetch all leave requests
-$query = "SELECT lr.id, po.name, po.rank, lr.start_date, lr.end_date, lr.reason, lr.status, lr.created_at 
+$query = "SELECT lr.id, po.name, po.`rank`, lr.start_date, lr.end_date, lr.reason, lr.status, lr.created_at 
           FROM leave_requests lr 
           JOIN police_officers po ON lr.officer_id = po.id 
           ORDER BY lr.created_at DESC";
