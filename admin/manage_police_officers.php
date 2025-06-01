@@ -19,8 +19,12 @@ $msg = '';
 // Handle delete
 if (isset($_GET['delete'])) {
     $id = intval($_GET['delete']);
-    $conn->query("DELETE FROM police_officers WHERE id = $id");
+    $delStmt = $conn->query("DELETE FROM police_officers WHERE id = ?");
+        $delStmt->bind_param("i",  $id);
+
+     if ($delStmt->execute()) {
     $msg = "✅ Officer deleted successfully.";
+    }
 }
 
 // Handle update
