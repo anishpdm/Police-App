@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Include the phone number, GL number, and other details in the insert query
 
         $stmt = $conn->prepare("INSERT INTO police_officers (name, email, rank, password, gl_number, phone) VALUES (?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("sssss", $name, $email, $rank, $password, $gl_number, $phone);
+        $stmt->bind_param("ssssss", $name, $email, $rank, $password, $gl_number, $phone);
     
         if ($stmt->execute()) {
             $success_msg = "✅ Police officer added successfully!";
